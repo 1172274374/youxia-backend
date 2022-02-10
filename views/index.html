@@ -1,38 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
+{{block 'head_index'}}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/base.css">
+    <link rel="stylesheet" href="/public/css/index.css">
+    
+    {{block 'css'}}
+    {{/block}}
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.css" rel="stylesheet">
     <style>
-        table td{
-            border: 1px solid rgb(20, 20, 20);
-            text-align: center;
-        }
-        table{
-            border-collapse: collapse;
+        :root{
+            --width:1510px;
         }
     </style>
 </head>
+{{/block}}
 <body>
-        <table>
-            <tr>
-                <th>name:</th>
-                <th>sex:</th>
-                <th>birthday:</th>
-            </tr>
-            {{each data}}
-            <tr>
-                <td>{{$value.name}}</td>
-                <td>{{$value.sex}}</td>
-                <td>{{$value.birthday}}</td>
-            </tr>
-            {{/each}}
-        </table>
-
+    <div class="main">
+        <div class="title">网站后台API</div>
+        <ul>
+            <li>
+                <span>
+                    http://120.79.121.67/cepin
+                </span>
+                <span>
+                    随机获取5条测评数据
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/cepin" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/youxi
+                </span>
+                <span>
+                    随机获取10条游戏数据
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/youxi" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/prospect
+                </span>
+                <span>
+                    随机获取9条新闻数据
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/prospect" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/zhixun
+                </span>
+                <span>
+                    随机获取24条资讯数据（标题，图片，日期，作者等）
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>number(0-6)</p>
+                </span>
+                <span>
+                    <a href="/zhixun" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/introduction?number=10
+                </span>
+                <span>
+                    获取number条游戏专题数据
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>number</p>
+                </span>
+                <span>
+                    <a href="/introduction?number=10" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/checkUser?username=1172274374
+                </span>
+                <span>
+                    检查用户名是否注册和是否是vip用户，设置session
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>username</p>
+                </span>
+                <span>
+                    <a href="/checkUser?username=1172274374" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/checkPassword?password=Rsz12321
+                </span>
+                <span>
+                    检查密码是否正确,设置session
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>password</p>
+                </span>
+                <span>
+                    <a href="/checkPassword?password=Rsz12321" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/recentblokbusters
+                </span>
+                <span>
+                    获取最新上市的大作游戏数据(标题，视频，图片，商城链接，价格，标签，评分等)
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/youxi" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/newgame
+                </span>
+                <span>
+                    随机获取6条最新游戏数据（标题，链接，图片，上市日期，分类，简介，评分）
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/newgame" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/buygame
+                </span>
+                <span>
+                    获取8条打折游戏数据（标题，价格，详情链接，图片，时间，打折百分比）
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/buygame" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/shopDetail?id=1 <br>
+                    http://120.79.121.67/shopDetail?number=10
+                </span>
+                <span>
+                    随机获取number条数据或者根据id查找商品
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>number || id</p>
+                </span>
+                <span>
+                    <a href="/shopDetail?number=10" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/login
+                </span>
+                <span>
+                    获取session
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/login" target="_blank">测试</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    http://120.79.121.67/logout
+                </span>
+                <span>
+                    清除session
+                </span>
+                <span>
+                    <p>GET</p>
+                    <p>NONE</p>
+                </span>
+                <span>
+                    <a href="/logout" target="_blank">测试</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
 </body>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/4.1.1/less.min.js"></script>
+<script src="/js/index.js"></script>
+
+
+{{block 'script_index'}}
 <script>
-    
+    var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay:{
+          delay: 7500,
+          disableOnInteraction:false,
+        },
+        loop:true,
+        // mousewheel:true,
+        pagination:{
+          el:'.swiper-pagination',
+          dynamicBullets:true,
+          clickable:true
+        },
+        slidesPerView: 4,
+        spaceBetween: 30,
+    });
+    swiper.el.onmouseover=function(){
+        swiper.navigation.$nextEl.removeClass('hide');
+        swiper.navigation.$prevEl.removeClass('hide');
+        swiper.pagination.$el.removeClass('hide');
+    }
+    swiper.el.onmouseout=function(){
+        swiper.navigation.$nextEl.addClass('hide');
+        swiper.navigation.$prevEl.addClass('hide');
+        swiper.pagination.$el.addClass('hide');
+    }
 </script>
+<script>
+
+
+    var banner_info = document.querySelectorAll('.banner_info')
+    var banner_img = document.querySelectorAll('.banner_img img')
+
+    
+
+
+    banner_info.forEach((item,index)=>{
+        item.innerHTML = item.innerHTML.slice(0,54)+'...'
+        console.log(item);
+    })
+
+</script>
+{{/block}}
 </html>

@@ -1,0 +1,36 @@
+{{extend './index.html'}}
+
+{{block 'css'}}
+    <link rel="stylesheet" href="/css/youxi.css">
+{{/block}}
+
+{{block 'content'}}
+    <div class="content">
+        <div class="breadcrumbs">
+            <a href="/">冉冉游戏</a><span>&gt;</span><a href="/game/{{game_class}}?page=1">{{game_class_id}}</a><span>&gt;</span><a href="">{{game[0].game_title}}</a>
+        </div>
+        <div class="game_id_title">
+            {{game[0].game_title}}
+        </div>
+        <div class="game_id_info">
+            <h1>游戏简介</h1>
+            <p>{{game[0].game_introduction}}</p>
+        </div>
+        <div class="game_id_version">
+            <h1>配置需求</h1>
+            <div>
+                {{each game_config}}
+                <p>{{$value}}</p>
+                {{/each}}
+            </div>
+        </div>
+        <div class="game_id_tupian_title">
+            图片展示
+        </div>
+        <div class="game_id_pics">
+            {{each game_img}}
+            <img src="/img/{{$value}}" alt="">
+            {{/each}}
+        </div>
+    </div>
+{{/block}}

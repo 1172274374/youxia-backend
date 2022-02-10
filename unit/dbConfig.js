@@ -7,7 +7,7 @@ module.exports = {
         database:'ran',
         port:'8080'
     },
-    sqlConnect:function(sql,sqlArr,callBack){
+    query:function(sql,sqlArr,callBack){
         var pool = mysql.createPool(this.config)
         pool.getConnection(function(err,conn){
             if(err){
@@ -15,6 +15,27 @@ module.exports = {
             }
             conn.query(sql,sqlArr,callBack)
             conn.release()
+        })
+    },
+    promiseQuery:function(pissql,sqlArry){
+        return new Promise((resolve,reject)=>{
+            var pool = mysql.createPool(this.config)
+            pool.getConnection(function(err,conn){
+                if(err){
+                    reject(err)
+                }else{
+                    conn.query(pissql,sqlArry,(err,data)=>{
+                        if(err){
+                            reject(err)
+                        }else{
+                            resolve(data)
+                        }
+                        conn.release()
+                    }) 
+                }
+            })
+        }).catch((err)=>{
+            console.log(err);
         })
     }
 }

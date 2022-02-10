@@ -1,0 +1,129 @@
+.content{
+    width: 80%;
+    min-height: 1700px;
+    background-color: rgb(236, 234, 236);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 5%;
+}
+
+.breadcrumbs{
+    width: 500px;
+    height: 20px;
+    /* background-color: rosybrown; */
+    position: absolute;
+    top: 20px;
+}
+
+.breadcrumbs a{
+    color: rgba(250, 26, 239, 0.53);
+}
+
+.breadcrumbs span{
+    padding: 0 10px;
+    user-select: none;
+}
+
+
+
+.game_id_title{
+    width: 300px;
+    height: 60px;
+    /* background-color: rosybrown; */
+    position: absolute;
+    top: 5%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+
+
+
+
+.game_id_info{
+    width: 80%;
+    height: 200px;
+    /* background-color: rosybrown; */
+    position: absolute;
+    top: 10%;
+}
+
+.game_id_info h1{
+    width: 30%;
+    text-align: center;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+}
+
+.game_id_info p{
+    width: 90%;
+    height: 60%;
+    /* background: blue; */
+    padding: 10px;
+    letter-spacing: 2px;
+}
+
+
+
+
+.game_id_version{
+    width: 80%;
+    height: 500px;
+    /* background-color: rgb(186, 146, 146); */
+    position: absolute;
+    top: 25%;
+}
+
+.game_id_version h1{
+    width: 30%;
+    text-align: center;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+}
+
+.game_id_version div{
+    width: 90%;
+    height: 80%;
+    /* background: blue; */
+    padding: 10px;
+}
+
+.game_id_version div p{
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+.game_id_pics{
+    width: 100%;
+    background-color: rosybrown;
+    position: absolute;
+    top: 60%;
+}
+
+.game_id_pics img{
+    width: 50%;
+    float: left;
+}
+
+.game_id_tupian_title{
+    width: 50%;
+    height: 50px;
+    background-color: rgb(209, 17, 17);
+    position: absolute;
+    top: 55%;
+    text-align: center;
+    font-size: 24px;
+    line-height: 50px;
+}

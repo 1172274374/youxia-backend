@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/less/test1.less" rel="stylesheet/less" type="text/css"/>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+    <button class="btn">确定</button>
+    <select name="shuz" id="hhh">
+        hhh
+        <option value="1">广州</option>
+        <option value="深圳">深圳</option>
+        <option value="上海">上海</option>
+        <option value="4">杭州</option>
+    </select>
+    <form id="advForm">
+        <p>广告名称：<input type="text" name="advName"  value="xixi"></p>
+        <p>广告类别：<select name="advType">
+            <option value="1">轮播图</option>
+            <option value="2">轮播图底部广告</option>
+            <option value="3">热门回收广告</option>
+            <option value="4">优品精选广告</option>
+        </select></p>
+        <p><input type="button" id="btn" value="添加"></p>
+    </form>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/4.1.1/less.js"></script>
+<script src="/js/less_config.js"></script>
+<script src="/node_modules/art-template/lib/template-web.js"></script>
+<script>
+    function ajax(url,data) {
+        return new Promise((resolve,reject)=>{
+            let params = ''
+            let xhr = new XMLHttpRequest()
+            for(attr in data){
+                params += attr + '=' + data[attr]+ '&'
+            }
+            params ='?'+params.substring(0,params.length-1)
+            xhr.open('get',url+params)
+            xhr.send()
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                        resolve(JSON.parse(xhr.responseText))
+                }else if(xhr.status == 404){
+                        reject('err:'+xhr.status)
+                }
+            }
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+
+    function ajax_post(url,formdata) {
+        return new Promise((resolve,reject)=>{
+            let xhr = new XMLHttpRequest()
+            xhr.open('post',url)
+            xhr.send(formdata)
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                        resolve(JSON.parse(xhr.responseText))
+                }else if(xhr.status == 404){
+                        reject('err:'+xhr.status)
+                }
+            }
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+
+    async function ran(data) {
+        let shizhang = await ajax('https://api.muxiaoguo.cn/api/dujitang',data)
+        console.log(shizhang);
+    }
+
+    async function ran_post(formdata) {
+        let shizhang = await ajax_post('/test3',formdata)
+        console.log(shizhang);
+    }
+
+
+</script>
+<script>
+
+var btn=document.querySelector("#btn");
+//为按钮添加点击事件
+btn.onclick=function(){
+    //根据ID获得页面当中的form表单元素
+    var form=document.querySelector("#advForm");
+    //将获得的表单元素作为参数，对formData进行初始化
+    var formdata=new FormData(form);
+    //通过get方法获得name为advName元素的value值
+    ran_post(formdata)
+
+
+    console.log(fromdata);
+}
+</script>
+</html>

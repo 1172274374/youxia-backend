@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/login" method="post" class="form">
-        <label for="name">name:</label>
-        <input type="text" name="name" id="name">
-        <label for="sex">sex:</label>
-        <input type="text" name="sex" id="sex">
-        <label for="birthday">birthday:</label>
-        <input type="text" name="birthday" id="birthday">
-        <input type="submit" class="form_submit">
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <form
+      action="/uploadFile"
+      method="post"
+      enctype="multipart/form-data"
+      
+    >
+      <input type="text" name="username">
+      <input type="file" name="file"  />
+      <textarea cols="30" rows="30" name="text" ></textarea>
+      <input type="submit" value="upload" />
     </form>
-    <button class="btn">序列化</button>
-    <div class="content"></div>
-</body>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-<script>
-        $('.form').on('submit',()=>{
-            var result = $('.form').serializeArray()
-            var result1 = {}
-            result.forEach((item)=>{
-                result1[item.name] = item.value
-            })
-            if(result1.name == '' || result1.sex == '' || result1.birthday == ''){
-                alert('账号或密码错误')
-                return false
-                
-            }
-        })
-</script>
+  </body>
 </html>

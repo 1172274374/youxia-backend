@@ -1,4 +1,7 @@
 *{margin: 0;padding: 0;}
 li{list-style: none;}
 button{border: 0;}
-a{text-decoration: none;color: #000;}
+a{text-decoration: none;color: rgb(252, 248, 248);}
+input{
+    outline: none;
+}

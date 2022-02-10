@@ -1,0 +1,76 @@
+{{extend './index.html'}}
+
+{{block 'css'}}
+<link rel="stylesheet" href="/css/game.css">
+{{/block}}
+
+{{block 'content'}}
+    <div class="game_class">
+        <p>{{data[0].game_class}}</p>
+    </div>
+    <div class="game_content">
+        <ul>
+
+            {{each data}}
+            <li>    
+                <a href="/game/{{game_class}}/{{$value.id}}"><img src="/img/{{$value.game_banner}}" alt=""></a>
+                <div class="game_content_biaoqian">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+                    <p>{{$value.game_class}}</p>
+                </div>
+                <p class="game_content_title">
+                    {{$value.game_title}}
+                </p>
+                <p class="game_content_version">
+                    <span>{{$value.game_configuration}}</span>
+                </p>
+                <div class="game_content_boundary"></div>
+                <div class="game_content_xiangxi">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <p class="dianzhan">123</p>
+                    <p class="go">立刻前往</p>
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="game_pagination">
+        <div class="pagination">
+            <ul>
+                <li>
+                    {{if page-2 > 0}}
+                    <a href="/game/{{game_class}}?page={{page-1}}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    {{else}}
+                    <i class="fa fa-chevron-left no_click" aria-hidden="true"></i>
+                    {{/if}}
+                
+                </li>
+                <li><a href="/game/{{game_class}}?page={{if page-2 < 0}}1{{else}}{{page-2}}{{/if}}">{{if page-2 < 0}}1{{else}}{{page-2}}{{/if}}</a></li>
+                <li><a href="/game/{{game_class}}?page={{if page-1 < 1}}1{{else}}{{page-1}}{{/if}}">{{if page-1 < 1}}1{{else}}{{page-1}}{{/if}}</a></li>
+                <li><a href="/game/{{game_class}}?page={{page}}">{{page}}</a></li>
+                <li><a href="/game/{{game_class}}?page={{if page-0+1 > page_length-1}}{{page_length}}{{else}}{{page-0+1}}{{/if}}">{{if page-0+1 > page_length}}{{page_length}}{{else}}{{page-0+1}}{{/if}}</a></li>
+                <li><a href="/game/{{game_class}}?page={{if page-0+2 > page_length}}{{page_length}}{{else}}{{page-0+2}}{{/if}}">{{if page-0+2 > page_length}}{{page_length}}{{else}}{{page-0+2}}{{/if}}</a></li>
+                <li>
+                    {{if page-0+2 < page_length}}
+                    <a href="/game/{{game_class}}?page={{page-0+1}}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    {{else}}
+                    <i class="fa fa-chevron-right no_click" aria-hidden="true"></i>
+                    {{/if}}
+                </li>
+            </ul>
+        </div>
+    </div>
+{{/block}}
+
+{{block 'script_index'}}
+    <script>
+        var version = document.querySelectorAll('.game_content_version span')
+        console.log(version);
+        version.forEach((item)=>{
+            item.innerHTML = item.innerHTML.slice(0,50) + '...'
+        })
+
+    </script>
+{{/block}}
