@@ -2,7 +2,7 @@ var mysql = require('mysql')
 module.exports = {
     config:{
         host:'rsz12321123.mysql.rds.aliyuncs.com',     //阿里鱼主机地址
-        user:'',    //用户名
+        user:'ranshizhang',    //用户名
         password:'',    //密码
         database:'ran',     //数据库
         port:'8080'     //公网端口
